@@ -16,3 +16,6 @@
 - link:
     ~/.zshrc: dotfiles/zshrc
     ~/.gitconfig: dotfiles/gitconfig
+    ~/.omnisharp/omnisharp.json: dotfiles/omnisharp.json
+
+
