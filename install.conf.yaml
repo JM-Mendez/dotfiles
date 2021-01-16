@@ -1,10 +1,12 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
 - clean: ['~']
 
 - link:
-    ~/.zshrc:
-        path: dotfiles/zshrc
-        create: false
-        relink: false
-        force: false
+    ~/.zshrc: dotfiles/zshrc
+    ~/.gitconfig: dotfiles/gitconfig
 
 
