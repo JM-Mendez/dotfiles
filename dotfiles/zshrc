@@ -10,11 +10,6 @@
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$ZSH/custom
 
-if [[ ! -d "$ZSH_CUSTOM/themes/pure" ]]; then
-  print -P -- "==> cloning pure theme"
-  git clone https://github.com/sindresorhus/pure.git "$ZSH_CUSTOM/themes/pure"
-fi
-
 fpath+=$ZSH_CUSTOM/themes/pure
 autoload -U promptinit; promptinit
 prompt pure
@@ -34,18 +29,6 @@ export GIT_EDITOR="code --wait"
 # Prevent git from using global config, ensures it's always set
 git config --global user.useConfigOnly true
 
-##########################
-#	      PLUGINS	         #
-##########################
-if [[ ! -d "$ZSH/custom/plugins/zsh-syntax-highlighting" ]]; then
-  print -P -- "==> cloning syntax highlighting "
-  git clone git://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
-fi
-
-if [[ ! -d "$ZSH/custom/plugins/zsh-autosuggestions" ]]; then
-  print -P -- "==> cloning zsh-autosuggestions "
-  git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
-fi
 
 plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 
