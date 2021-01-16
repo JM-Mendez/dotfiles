@@ -1,0 +1,10 @@
+- clean: ['~']
+
+- link:
+    ~/.zshrc:
+        path: dotfiles/zshrc
+        create: false
+        relink: false
+        force: false
+
+
