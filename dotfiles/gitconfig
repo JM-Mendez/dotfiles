@@ -1,0 +1,6 @@
+[user]
+	name = John Mendez
+	email = john.manuel.mendez@gmail.com
+	useConfigOnly = true
+[core]
+	editor = code --wait
