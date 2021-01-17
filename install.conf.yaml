@@ -15,3 +15,6 @@
 
 - link:
     ~/.zshrc: dotfiles/zshrc
+    ~/.gitconfig: 
+        path: dotfiles/gitconfig
+        force: true
