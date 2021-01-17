@@ -1,0 +1,17 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
+- clean: ['~']
+
+- shell:
+    - 
+        command: ./install-oh-my-zsh
+        description: Running zsh scripts
+        stdout: true
+        stderr: true
+        quiet: true
+
+- link:
+    ~/.zshrc: dotfiles/zshrc
