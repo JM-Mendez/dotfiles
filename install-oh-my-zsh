@@ -9,6 +9,10 @@ if [ ! -d  "${ZSH}" ]; then
   rm ~/.zshrc
 fi
 
+if [ "${OVERRIDE_ZSHRC}" = true ]; then
+  rm ~/.zshrc
+fi
+
 # #  Theme
 if [ ! -d "${ZSH_CUSTOM}/themes/pure" ]; then
   echo -e "==> cloning pure theme"
