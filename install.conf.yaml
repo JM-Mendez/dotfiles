@@ -14,7 +14,7 @@
         quiet: true
 
 - link:
-    ~/.zshrc: dotfiles/zshrc
-    ~/.gitconfig: 
-        path: dotfiles/gitconfig
+    ~/.zshrc: 
+        # oh-my-zsh is pre-installed in vscode remote containers, so delete it
         force: true
+    ~/.gitconfig: 
