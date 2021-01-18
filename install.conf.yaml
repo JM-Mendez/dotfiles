@@ -18,3 +18,5 @@
         # oh-my-zsh is pre-installed in vscode remote containers, so delete it
         force: true
     ~/.gitconfig: 
+    ~/.omnisharp/omnisharp.json:
+        if: '[ `repoType` = dotnet ]'

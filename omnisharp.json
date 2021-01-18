@@ -1,0 +1,34 @@
+{
+    "RoslynExtensionsOptions": {
+        "EnableAnalyzersSupport": true,
+        "LocationPaths": [
+            "c:/Users/jomendez/.vscode/extensions/josefpihrt-vscode.roslynator-3.1.0/roslyn/common",
+            "c:/Users/jomendez/.vscode/extensions/josefpihrt-vscode.roslynator-3.1.0/roslyn/analyzers",
+            "c:/Users/jomendez/.vscode/extensions/josefpihrt-vscode.roslynator-3.1.0/roslyn/refactorings",
+            "c:/Users/jomendez/.vscode/extensions/josefpihrt-vscode.roslynator-3.1.0/roslyn/fixes"
+        ],
+        "documentAnalysisTimeoutMs": 60000
+    },
+    "fileOptions": {
+        "excludeSearchPatterns": [
+            "**/bin/**/*",
+            "**/obj/**/*",
+            "**/node_modules/**/*"
+        ]
+    },
+    "FormattingOptions": {
+        "NewLinesForBracesInTypes": true,
+        "NewLinesForBracesInMethods": true,
+        "NewLinesForBracesInProperties": true,
+        "NewLinesForBracesInAccessors": true,
+        "NewLinesForBracesInAnonymousMethods": true,
+        "NewLinesForBracesInControlBlocks": true,
+        "NewLinesForBracesInAnonymousTypes": true,
+        "NewLinesForBracesInObjectCollectionArrayInitializers": true,
+        "NewLinesForBracesInLambdaExpressionBody": true,
+        "IndentationSize": 4
+    },
+    "msbuild": {
+        "Platform": "AnyCPU"
+    }
+}
