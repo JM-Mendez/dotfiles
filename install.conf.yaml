@@ -19,4 +19,4 @@
         force: true
     ~/.gitconfig: 
     ~/.omnisharp/omnisharp.json:
-        if: '[ `repoType` = dotnet ]'
+        if: '[ `REPO_TYPE` = dotnet ]'
