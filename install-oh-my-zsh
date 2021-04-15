@@ -8,12 +8,6 @@ if [ ! -d  "${ZSH}" ]; then
   rm ~/.zshrc
 fi
 
-# #  Theme
-if [ ! -d "${ZSH_CUSTOM}/themes/pure" ]; then
-  echo -e "==> cloning pure theme"
-  git clone https://github.com/sindresorhus/pure.git "${ZSH_CUSTOM}/themes/pure"
-fi
-
 # ##########################
 # #	      PLUGINS	                              #
 # ##########################

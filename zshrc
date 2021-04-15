@@ -27,13 +27,9 @@ git config --global user.useConfigOnly true
 
 plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 
-# load pure theme
-fpath+=$ZSH_CUSTOM/themes/pure
-
+ZSH_THEME="fwalch"
 # load zsh
 source $ZSH/oh-my-zsh.sh
-autoload -U promptinit; promptinit
-prompt pure
 
 ##########################
 #	      ALIASES	         #
