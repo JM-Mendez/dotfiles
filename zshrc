@@ -5,14 +5,8 @@
 ######################
 #      PATHS	     #
 ######################
-# in decreasing order of priority
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-export ZSH_CUSTOM=$ZSH/custom
-
-fpath+=$ZSH_CUSTOM/themes/pure
-autoload -U promptinit; promptinit
-prompt pure
+ZSH=$HOME/.oh-my-zsh
 
 autoload colors
 if [[ "$terminfo[colors]" -gt 8 ]]; then
@@ -25,21 +19,27 @@ done
 eval RESET='$reset_color'
 
 # Set the git editor
-export GIT_EDITOR="code --wait"
+GIT_EDITOR="code --wait"
+
 # Prevent git from using global config, ensures it's always set
 git config --global user.useConfigOnly true
 
-
 plugins=(zsh-autosuggestions zsh-syntax-highlighting)
+
+# load pure theme
+fpath+=$HOME/.zsh/pure
 
 # load zsh
 source $ZSH/oh-my-zsh.sh
+autoload -U promptinit; promptinit
+prompt pure
 
 ##########################
 #	      ALIASES	         #
 ##########################
 alias cls='clear'
 
+alias draftw='yarn dpad-draftjs:watch'
 alias yr='yarn run'
 alias ya='_add_prod_dep'
 alias yad='_add_dev_dep'
@@ -56,9 +56,11 @@ alias yte='yarn test-e2e'
 alias plop='yr plop'
 
 
+# alias gcmpkg='git commit -m "WIP: INSTALL PKGS"'
 alias gchangedate='GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"'
 alias gaa='git add --all'
 alias gca='git commit --amend'
+# alias glog='git-log --decorate --graph --remotes --all'
 alias gpo='git push --follow-tags  origin $(git_current_branch)'
 alias gpos='git push -o ci.skip --follow-tags origin $(git_current_branch)'
 alias gfp='git push --follow-tags --force-with-lease origin $(git_current_branch)'
@@ -109,12 +111,7 @@ _yarn_install() {
    yarn install $@ 
 }
 
-_synch_ch_with_github() {
-   ch2gh https://app.clubhouse.io/interminedatabrowser/story/$@/implement-design-system-with-css-variables https://github.com/JM-Mendez/InterMine-Data-Browser-Tool
-}
-
 _git_commit(){
-
    local CURRENT_COMMIT=$(git rev-parse HEAD) 
    if [[ $1 = 'empty' ]]; then
       yarn run cz --allow-empty
@@ -195,14 +192,5 @@ _up() {
   done
 }
 
-updatetheme() {
-  print -P -- "updating daveverwer-custom theme"
-  curl -# https://gist.githubusercontent.com/JM-Mendez/dfea7e44adb9faf74e8a8b5be1721ad8/raw > $ZSH_CUSTOM/themes/daveverwer-custom.zsh-theme
-  exec zsh
-}
-
-
 # end of profiling
 # zprof
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

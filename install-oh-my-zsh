@@ -1,15 +1,9 @@
 #!/usr/bin/env bash
 
-export ZSH=$HOME/.oh-my-zsh
-export ZSH_CUSTOM=$ZSH/custom
 
 if [ ! -d  "${ZSH}" ]; then
   echo -e "==> installing oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  rm ~/.zshrc
-fi
-
-if [ "${OVERRIDE_ZSHRC}" = true ]; then
   rm ~/.zshrc
 fi
 
