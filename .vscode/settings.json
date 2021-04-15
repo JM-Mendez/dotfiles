@@ -9,7 +9,10 @@
     "titleBar.activeBackground": "#ab0426",
     "titleBar.activeForeground": "#e7e7e7",
     "titleBar.inactiveBackground": "#ab042699",
-    "titleBar.inactiveForeground": "#e7e7e799"
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "editorGroup.border": "#fa1b49",
+    "panel.border": "#fa1b49",
+    "sideBar.border": "#fa1b49"
   },
   "peacock.color": "#dd0531",
   "peacock.remoteColor": "#42b883"
