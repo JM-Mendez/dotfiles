@@ -7,6 +7,7 @@
 ######################
 # Path to your oh-my-zsh installation.
 ZSH=$HOME/.oh-my-zsh
+ZSH_CUSTOM=$ZSH/custom
 
 autoload colors
 if [[ "$terminfo[colors]" -gt 8 ]]; then
