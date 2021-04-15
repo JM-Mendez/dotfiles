@@ -27,7 +27,7 @@ git config --global user.useConfigOnly true
 plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 
 # load pure theme
-fpath+=$HOME/.zsh/pure
+fpath+=$ZSH_CUSTOM/themes/pure
 
 # load zsh
 source $ZSH/oh-my-zsh.sh
