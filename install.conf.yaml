@@ -5,14 +5,6 @@
         force: true
 
 - clean: ['~']
-
-- shell:
-    - 
-        command: ./install-oh-my-zsh
-        description: Running zsh scripts
-        stdout: true
-        stderr: true
-        quiet: true
         
 - shell:
     - 
@@ -34,6 +26,14 @@
     - 
         command: if [ `uname` = Darwin ] && brew install fnm
         description: Installing fnm (fast node manager)
+        stdout: true
+        stderr: true
+        quiet: true
+        
+- shell:
+    - 
+        command: ./install-oh-my-zsh
+        description: Running zsh scripts
         stdout: true
         stderr: true
         quiet: true
