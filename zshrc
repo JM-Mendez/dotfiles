@@ -31,6 +31,9 @@ ZSH_THEME="fwalch"
 # load zsh
 source $ZSH/oh-my-zsh.sh
 
+# Set up shell for fnm
+eval "$(fnm env)"
+
 ##########################
 #	      ALIASES	         #
 ##########################
