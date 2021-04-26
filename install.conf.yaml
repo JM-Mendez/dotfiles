@@ -8,22 +8,6 @@
         
 - shell:
     - 
-        command: if [ `uname` = Darwin ] && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        description: Installing homebrew
-        stdout: true
-        stderr: true
-        quiet: true
-        
-- shell:
-    - 
-        command: if [ `uname` = Darwin ] && brew install git
-        description: Installing git
-        stdout: true
-        stderr: true
-        quiet: true
-        
-- shell:
-    - 
         command: if [ `uname` = Darwin ] && brew install fnm
         description: Installing fnm (fast node manager)
         stdout: true
