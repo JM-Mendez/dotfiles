@@ -7,12 +7,7 @@
 - clean: ['~']
         
 - shell:
-    - 
-        command: if [ `uname` = Darwin ] && brew install fnm
-        description: Installing fnm (fast node manager)
-        stdout: true
-        stderr: true
-        quiet: true
+    - [curl -fsSL https://fnm.vercel.app/install | bash, Installing fnm (fast node manager)]
         
 - shell:
     - 
@@ -21,7 +16,6 @@
         stdout: true
         stderr: true
         quiet: true
-
 
 - link:
     ~/.zshrc: 
