@@ -11,7 +11,7 @@
         
 - shell:
     - 
-        command: ./install-oh-my-zsh
+        command: bash ./install-oh-my-zsh
         description: Running zsh scripts
         stdout: true
         stderr: true
