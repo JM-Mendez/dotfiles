@@ -10,7 +10,7 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 [[ $(uname) == "Linux" ]] && cd ~/dotfiles
 
-git submodule add https://github.com/anishathalye/dotbot
+[[ ! -d dotbot ]] && git submodule add https://github.com/anishathalye/dotbot
 
 cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
