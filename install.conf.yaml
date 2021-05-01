@@ -8,7 +8,7 @@
         
 - shell:
     - 
-        command: [[ $(uname) == "Darwin" ]] && curl -fsSL https://fnm.vercel.app/install | bash
+        command: if [[ $(uname) == "Darwin" ]]; then && curl -fsSL https://fnm.vercel.app/install | bash; fi
         description: Installing fnm (fast node manager)
         stdout: true
         stderr: true
