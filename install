@@ -8,8 +8,7 @@ DOTBOT_DIR="dotbot"
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# TODO: uncomment when using docker containers
-# cd ~/dotfiles
+[[ $(uname) == "Linux" ]] && cd ~/dotfiles
 
 git submodule add https://github.com/anishathalye/dotbot
 
