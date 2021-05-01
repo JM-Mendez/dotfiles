@@ -7,7 +7,12 @@
 - clean: ['~']
         
 - shell:
-    - [curl -fsSL https://fnm.vercel.app/install | bash, Installing fnm (fast node manager)]
+    - 
+        command: [[ $(uname) == "Darwin" ]] && curl -fsSL https://fnm.vercel.app/install | bash
+        description: Installing fnm (fast node manager)
+        stdout: true
+        stderr: true
+        quiet: true
         
 - shell:
     - 
