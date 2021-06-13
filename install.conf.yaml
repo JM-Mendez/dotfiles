@@ -8,8 +8,16 @@
         
 - shell:
     - 
-        command: if [[ $(uname) == "Darwin" ]]; then curl -fsSL https://fnm.vercel.app/install | bash; fi
-        description: Installing fnm (fast node manager)
+        command: if [[ $(uname) == "Darwin" ]]; then /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; fi
+        description: Installing homebrew
+        stdout: true
+        stderr: true
+        quiet: true
+        
+- shell:
+    - 
+        command: if [[ $(uname) == "Darwin" ]]; then brew install git fnm; fi
+        description: Installing `fnm` and `git` using homebrew
         stdout: true
         stderr: true
         quiet: true
