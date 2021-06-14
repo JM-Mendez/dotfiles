@@ -8,15 +8,7 @@
         
 - shell:
     - 
-        command: if [[ $(uname) == "Darwin" ]]; then /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; fi
-        description: Installing homebrew
-        stdout: true
-        stderr: true
-        quiet: true
-        
-- shell:
-    - 
-        command: if [[ $(uname) == "Darwin" ]]; then brew install git fnm; fi
+        command: if [[ $(uname) == "Darwin" ]]; then /opt/homebrew/bin/brew install git fnm; fi
         description: Installing `fnm` and `git` using homebrew
         stdout: true
         stderr: true
