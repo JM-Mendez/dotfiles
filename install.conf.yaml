@@ -6,12 +6,12 @@
 
 - clean: ["~"]
 
-# - shell:
-#     - command: if [[ $(uname) == "Darwin" ]]; then /opt/homebrew/bin/brew install git; fi
-#       description: install latest `git` using homebrew
-#       stdout: true
-#       stderr: true
-#       quiet: true
+- shell:
+    - command: if [[ $(uname) == "Darwin" ]]; then /opt/homebrew/bin/brew install git; fi
+      description: install latest `git` using homebrew
+      stdout: true
+      stderr: true
+      quiet: true
 
 - shell:
     - command: bash ./install-oh-my-zsh
