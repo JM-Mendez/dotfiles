@@ -1,27 +1,39 @@
 - defaults:
     link:
-        create: true
-        relink: true
-        force: true
+      create: true
+      relink: true
+      force: true
 
-- clean: ['~']
-        
+- clean: ["~"]
+
+# - shell:
+#     - command: if [[ $(uname) == "Darwin" ]]; then /opt/homebrew/bin/brew install git; fi
+#       description: install latest `git` using homebrew
+#       stdout: true
+#       stderr: true
+#       quiet: true
+
 - shell:
-    - 
-        command: if [[ $(uname) == "Darwin" ]]; then /opt/homebrew/bin/brew install git fnm; fi
-        description: Installing `fnm` and `git` using homebrew
-        stdout: true
-        stderr: true
-        quiet: true
-        
-- shell:
-    - 
-        command: bash ./install-oh-my-zsh
-        description: Running zsh scripts
-        stdout: true
-        stderr: true
-        quiet: true
+    - command: bash ./install-oh-my-zsh
+      description: Run zsh scripts
+      stdout: true
+      stderr: true
+      quiet: true
 
 - link:
-    ~/.zshrc: 
-    ~/.gitconfig: 
+    ~/.zshrc:
+    ~/.gitconfig:
+
+- shell:
+    - command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+      description: install `nvm`
+      stdout: true
+      stderr: true
+      quiet: true
+
+- shell:
+    - command: source ~/.zshrc && nvm install --lts
+      description: install latest LTS version of node
+      stdout: true
+      stderr: true
+      quiet: true

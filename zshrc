@@ -12,11 +12,11 @@ ZSH_CUSTOM=$ZSH/custom
 
 autoload colors
 if [[ "$terminfo[colors]" -gt 8 ]]; then
-    colors
+	colors
 fi
 for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
-    eval $COLOR='$fg_no_bold[${(L)COLOR}]'
-    eval BOLD_$COLOR='$fg_bold[${(L)COLOR}]'
+	eval $COLOR='$fg_no_bold[${(L)COLOR}]'
+	eval BOLD_$COLOR='$fg_bold[${(L)COLOR}]'
 done
 eval RESET='$reset_color'
 
@@ -31,9 +31,6 @@ plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 ZSH_THEME="fwalch"
 # load zsh
 source $ZSH/oh-my-zsh.sh
-
-# Set up shell for fnm
-eval "$(fnm env)"
 
 ##########################
 #	      ALIASES	         #
@@ -55,7 +52,6 @@ alias ytw='yarn test-watch'
 alias ytc='yarn typecheck'
 alias yte='yarn test-e2e'
 alias plop='yr plop'
-
 
 # alias gcmpkg='git commit -m "WIP: INSTALL PKGS"'
 alias gchangedate='GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"'
@@ -101,97 +97,102 @@ alias up='_up'
 alias chgh='_synch_ch_with_github'
 
 tabdpad() {
-   tabset --badge "dpad $1"
+	tabset --badge "dpad $1"
 }
 
 tabdraft() {
-   tabset --badge "draft $1"
+	tabset --badge "draft $1"
 }
 
 _yarn_install() {
-   yarn install $@ 
+	yarn install $@
 }
 
-_git_commit(){
-   local CURRENT_COMMIT=$(git rev-parse HEAD) 
-   if [[ $1 = 'empty' ]]; then
-      yarn run cz --allow-empty
-   elif [[ $1 = 'no-verify' ]]; then
-      yarn run cz --no-verify
-   else 
-     yarn run cz
-   fi
- 
-   local NEXT_COMMIT=$(git rev-parse HEAD) 
-   if [[ $CURRENT_COMMIT != $NEXT_COMMIT ]]; then
+_git_commit() {
+	local CURRENT_COMMIT=$(git rev-parse HEAD)
+	if [[ $1 = 'empty' ]]; then
+		yarn run cz --allow-empty
+	elif [[ $1 = 'no-verify' ]]; then
+		yarn run cz --no-verify
+	else
+		yarn run cz
+	fi
 
-      echo    # (optional) move to a new line
-      read "REPLY?Do you want to amend the commit? [Y/n] " 
-   
-      if [[ $REPLY =~ ^[Yy]$ || -z $REPLY ]]; then
-        if [[ $1 = 'empty' ]]; then
-           git commit --amend --allow-empty
-        else git commit --amend 
-        fi
-      else 
-         echo
-         echo commit amend aborted 
-      fi
-   else 
-      echo
-      echo commit aborted
-   fi
+	local NEXT_COMMIT=$(git rev-parse HEAD)
+	if [[ $CURRENT_COMMIT != $NEXT_COMMIT ]]; then
+
+		echo # (optional) move to a new line
+		read "REPLY?Do you want to amend the commit? [Y/n] "
+
+		if [[ $REPLY =~ ^[Yy]$ || -z $REPLY ]]; then
+			if [[ $1 = 'empty' ]]; then
+				git commit --amend --allow-empty
+			else
+				git commit --amend
+			fi
+		else
+			echo
+			echo commit amend aborted
+		fi
+	else
+		echo
+		echo commit aborted
+	fi
 }
 
-_add_dev_dep(){
-   yarn add -D $@ 
+_add_dev_dep() {
+	yarn add -D $@
 }
 
-_add_prod_dep(){
-   yarn add $@ 
+_add_prod_dep() {
+	yarn add $@
 }
 
-check_has_postinstall_script () {
-  [[ $(cat package.json | grep "\"ostinstall\":" | wc -l) -gt 0 ]]
+check_has_postinstall_script() {
+	[[ $(cat package.json | grep "\"ostinstall\":" | wc -l) -gt 0 ]]
 }
 
-_remove_dep(){
-   yarn remove "$@" 
-   check_has_postinstall_script
-   [[ $(cat package.json | grep "\"ostinstall\":" | wc -l) -gt 0 ]] && yarn postinstall
+_remove_dep() {
+	yarn remove "$@"
+	check_has_postinstall_script
+	[[ $(cat package.json | grep "\"ostinstall\":" | wc -l) -gt 0 ]] && yarn postinstall
 }
 
-_wipall(){ 
-  git add --all
-  git rm $(git ls-files --deleted) 2> /dev/null
-  git commit --no-verify -m "--wip-- $1 [skip ci]"
+_wipall() {
+	git add --all
+	git rm $(git ls-files --deleted) 2>/dev/null
+	git commit --no-verify -m "--wip-- $1 [skip ci]"
 }
 
-_wipstaged(){ 
-  git rm $(git ls-files --deleted) 2> /dev/null
-  git commit -m "--wip-- $1 [skip ci]"
+_wipstaged() {
+	git rm $(git ls-files --deleted) 2>/dev/null
+	git commit -m "--wip-- $1 [skip ci]"
 }
 
-_wipstaged_nv(){ 
-  git rm $(git ls-files --deleted) 2> /dev/null
-  git commit --no-verify -m "--wip-- $1 [skip ci]"
+_wipstaged_nv() {
+	git rm $(git ls-files --deleted) 2>/dev/null
+	git commit --no-verify -m "--wip-- $1 [skip ci]"
 }
 
-_git_checkpoint(){
-   git commit  -m "* CP - $1"
+_git_checkpoint() {
+	git commit -m "* CP - $1"
 }
 
-_git_checkpoint_nv(){
-   git commit --no-verify  -m "* CP - $1"
+_git_checkpoint_nv() {
+	git commit --no-verify -m "* CP - $1"
 }
 
 _up() {
-  times=$1
-  while [ "$times" -gt "0" ]; do
-    cd ..
-    times=$(($times - 1))
-  done
+	times=$1
+	while [ "$times" -gt "0" ]; do
+		cd ..
+		times=$(($times - 1))
+	done
 }
 
 # end of profiling
 # zprof
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
