@@ -35,6 +35,7 @@ source $ZSH/oh-my-zsh.sh
 ##########################
 #	      ALIASES	         #
 ##########################
+alias pm=pnpm
 alias cls='clear'
 
 alias draftw='yarn dpad-draftjs:watch'
@@ -57,6 +58,10 @@ alias plop='yr plop'
 alias gchangedate='GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"'
 alias gaa='git add --all'
 alias gca='git commit --amend'
+alias gmerge='git merge --ff-only'
+alias gmm='git merge main --ff-only'
+alias gsm='git switch main'
+alias gst='git switch staging'
 # alias glog='git-log --decorate --graph --remotes --all'
 alias gpo='git push --follow-tags  origin $(git_current_branch)'
 alias gpos='git push -o ci.skip --follow-tags origin $(git_current_branch)'
@@ -95,6 +100,9 @@ alias gss='git stash save $(print -Pn "%D{%m/%d %H:%M:%S} ")'
 alias gslist='git stash list'
 alias up='_up'
 alias chgh='_synch_ch_with_github'
+alias findport='lsof -nP -iTCP -sTCP:LISTEN | grep'
+
+alias pm='pnpm'
 
 tabdpad() {
 	tabset --badge "dpad $1"
@@ -199,3 +207,10 @@ _up() {
 
 export PNPM_HOME="/Users/johnmendez/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
+
+export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+export PUPPETEER_EXECUTABLE_PATH=$(which chromium)
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"                                       # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
