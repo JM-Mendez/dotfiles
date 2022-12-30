@@ -71,7 +71,7 @@ alias gtag='git tag -a'
 alias gffd='git fetch origin develop:develop'
 alias gffm='git fetch origin main:main'
 alias grbd='gffd && git rebase develop'
-alias grbm='gffm && git rebase main && yin'
+alias grbm='gffm && git rebase -i main && pnpm i'
 alias grbi='git rebase -i --keep-empty'
 alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
@@ -110,10 +110,6 @@ tabdpad() {
 
 tabdraft() {
 	tabset --badge "draft $1"
-}
-
-_yarn_install() {
-	yarn install $@
 }
 
 _git_commit() {
