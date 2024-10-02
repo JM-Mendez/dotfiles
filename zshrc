@@ -197,6 +197,10 @@ _up() {
 # end of profiling
 # zprof
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
@@ -210,3 +214,52 @@ export PUPPETEER_EXECUTABLE_PATH=$(which chromium)
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"                                       # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+
+git_delete_stale() {
+	# delete squash-merged
+	targetBranch=main
+	proceed=false
+	if [[ $# -gt 0 && ("$1" == "--proceed" || "$1" == "-p") ]]; then
+		proceed=true
+		shift
+	fi
+
+	if [[ $# -eq 0 ]]; then
+		targetBranch=$(git rev-parse --abbrev-ref HEAD)
+	else
+		targetBranch=$1
+		git checkout "$targetBranch"
+	fi
+
+	git for-each-ref refs/heads/ "--format=%(refname:short)" | while read -r branch; do
+		mergeBase=$(git merge-base "$targetBranch" "$branch")
+
+		if [[ $(git cherry "$targetBranch" "$(git commit-tree "$(git rev-parse "$branch^{tree}")" -p "$mergeBase" -m _)") == "-"* ]]; then
+			if [[ $proceed == true ]]; then
+				git branch -D "$branch" || true
+			else
+				git branch -D "$branch"
+			fi
+		fi
+	done
+}
+
+git_delete_remote() {
+	if [[ $# -gt 0 ]]; then
+		echo deleting $1...
+		git push origin --delete $1
+	fi
+
+}
+
+git_list_orphans() {
+	git fetch -p
+	git branch -vv | grep ': gone]' | awk '{print $1}'
+}
+
+git_delete_orphans() {
+	git fetch -p
+	git branch -vv | grep ': gone]' | awk '{print $1}' | while read -r branch; do
+		git branch -D "$branch"
+	done
+}
